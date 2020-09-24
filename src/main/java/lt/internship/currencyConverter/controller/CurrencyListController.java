@@ -1,22 +1,28 @@
 package lt.internship.currencyConverter.controller;
 
-import lt.internship.currencyConverter.integration.FxRates;
 import lt.internship.currencyConverter.integration.GetFxRatesList;
+import lt.internship.currencyConverter.integration.xmlEntities.FxRates;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/list")
 public class CurrencyListController {
-    private GetFxRatesList getCurrencyRateList;
-
-    public CurrencyListController(GetFxRatesList getCurrencyRateList) {
-        this.getCurrencyRateList = getCurrencyRateList;
+    public CurrencyListController(GetFxRatesList getFxRatesList) {
+        this.getFxRatesList = getFxRatesList;
     }
 
-//    @GetMapping
-//    public FxRates getAll(){
-//    }
+    GetFxRatesList getFxRatesList;
+    @GetMapping
+    public FxRates get() {
+        return getFxRatesList.getRatesfromUrl();
+    }
 }
 

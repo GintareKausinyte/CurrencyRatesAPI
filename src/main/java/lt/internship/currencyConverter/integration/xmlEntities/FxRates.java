@@ -1,7 +1,6 @@
-package lt.internship.currencyConverter.integration;
+package lt.internship.currencyConverter.integration.xmlEntities;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,12 +11,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-
+@Data
 @XmlRootElement(namespace = "http://www.lb.lt/WebServices/FxRates", name = "FxRates")
-//@XmlAccessorType(XmlAccessType.FIELD)
-@Getter
-@Setter
 public class FxRates {
    @XmlElement(name = "FxRate", required = true)
-    protected List<FxRate> FxRate;
+    protected List<FxRates> FxRate;
+
+
 }
