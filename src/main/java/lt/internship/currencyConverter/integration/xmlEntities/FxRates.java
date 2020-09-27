@@ -5,17 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Data
-@XmlRootElement(namespace = "http://www.lb.lt/WebServices/FxRates", name = "FxRates")
-public class FxRates {
+@XmlAccessorType (XmlAccessType.FIELD)
+public class FxRates implements Serializable {
    @XmlElement(name = "FxRate", required = true)
-    protected List<FxRates> FxRate;
+   protected List<FxRates> FxRate;
 
 
 }
