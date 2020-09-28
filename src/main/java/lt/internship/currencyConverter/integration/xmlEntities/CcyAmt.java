@@ -16,5 +16,5 @@ public class CcyAmt {
     @XmlElement(name = "Ccy", required = true)
     protected String Ccy;
     @XmlElement(name = "Amt", required = true)
-    protected BigDecimal Amt;
+    protected String Amt;
 }

@@ -4,7 +4,6 @@ import lt.lb.webservices.wsdl.GetCurrentFxRates;
 import lt.lb.webservices.wsdl.GetCurrentFxRatesResponse;
 import lt.lb.webservices.wsdl.GetFxRates;
 import lt.lb.webservices.wsdl.GetFxRatesResponse;
-import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
@@ -24,6 +23,7 @@ public class LBclient extends WebServiceGatewaySupport {
         GetFxRatesResponse response=(GetFxRatesResponse)getWebServiceTemplate().marshalSendAndReceive("https://lb.lt/webservices/fxrates/fxrates.asmx", request, new SoapActionCallback("http://www.lb.lt/WebServices/FxRates/getFxRates"));
         return response;
     }
+
 
 
 }

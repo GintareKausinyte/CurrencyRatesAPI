@@ -17,7 +17,7 @@ public class FxRate {
    @XmlElement(name = "Tp", required=true)
     protected String Tp;
    @XmlElement(name = "Dt", required=true)
-    protected Date Dt;
+    protected String Dt;
    @XmlElement(name = "CcyAmt", required=true)
     protected List<CcyAmt> CcyAmt;
 

@@ -55,7 +55,6 @@ public class GetFxRatesList {
 //        GetCurrentFxRatesResponse fxRates = (GetCurrentFxRatesResponse) jaxbUnmarshaller.unmarshal(url);
 //        return fxRates;
 //    }
-//
 //    public LBclient convertToObject(){
 //        LBclient lBclient=new LBclient();
 //    }
