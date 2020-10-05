@@ -3,7 +3,8 @@ package lt.internship.currencyConverter.integration.xmlEntities;
 import lombok.Data;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @Data
@@ -15,5 +16,4 @@ public class FxRate {
     protected String Dt;
    @XmlElement(name = "CcyAmt", required=true)
     protected List<CcyAmt> CcyAmt;
-
 }

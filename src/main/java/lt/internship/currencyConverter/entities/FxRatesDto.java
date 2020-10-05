@@ -12,5 +12,5 @@ public class FxRatesDto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(cascade = CascadeType.PERSIST)
-    private List<FxRateDto> fxRateList;
+    private List<FxRateDto> fxRateDtoList;
 }
