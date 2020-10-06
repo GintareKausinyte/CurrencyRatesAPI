@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../styles/style.css">
-    <title>Welcome</title>
+    <title>Current Currency Rates</title>
 </head>
 <body>
-<div th:each="rate : ${rates}">
+<h1 class="mar-l mar-b">Current Currency Rates</h1>
+<h5 class="mar-l">From "Lietuvos Bankas"</h5>
+<div class="mar" th:each="rate : ${rates}">
     <span class="gr font-strong" th:text="${rate.type}"></span>
     <span class="gr font-strong" th:text="${rate.date}"></span>
     <div></div>
     <span th:each="ccy : ${rate.currencyAmountList}">
-        <span th:text="${ccy.amount}"></span>
-        <span th:text="${ccy.currency}"></span>
+        <span class="font-strong" th:text="${ccy.amount}"></span>
+        <span>-</span>
+        <span class="mar-r" th:text="${ccy.currency}"></span>
     </span>
 </div>
 </body>

@@ -22,7 +22,6 @@ public class CurrencyRateListController {
     @RequestMapping(produces = "application/json", method = RequestMethod.GET)
     public String getRates(Model model) {
         model.addAttribute("rates", fxRatesService.getFxRateList());
-        model.addAttribute("ccyAmt", fxRatesService.getCcyAmtList());
         return "rates";
     }
 

@@ -4,7 +4,6 @@ import lt.internship.currencyConverter.entities.CcyAmtDto;
 import lt.internship.currencyConverter.entities.FxRateDto;
 import lt.internship.currencyConverter.entities.FxRatesDto;
 import lt.internship.currencyConverter.integration.xmlEntities.FxRates;
-import lt.internship.currencyConverter.repositories.CcyAmtRepository;
 import lt.internship.currencyConverter.repositories.FxRateRepository;
 import lt.internship.currencyConverter.repositories.FxRatesRepsository;
 import org.springframework.stereotype.Service;
@@ -21,16 +20,11 @@ import java.util.stream.Collectors;
 public class FxRatesService {
     FxRatesRepsository ratesRepsository;
     FxRateRepository rateRepository;
-    CcyAmtRepository ccyAmtRepository;
 
-    public FxRatesService(FxRatesRepsository ratesRepsository, FxRateRepository rateRepository, CcyAmtRepository ccyAmtRepository) {
+
+    public FxRatesService(FxRatesRepsository ratesRepsository, FxRateRepository rateRepository) {
         this.ratesRepsository = ratesRepsository;
         this.rateRepository = rateRepository;
-        this.ccyAmtRepository = ccyAmtRepository;
-    }
-
-    public List<CcyAmtDto> getCcyAmtList() {
-        return ccyAmtRepository.findAll();
     }
 
     public List<FxRateDto> getFxRateList() {

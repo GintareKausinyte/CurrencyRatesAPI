@@ -1,5 +1,5 @@
 body {
-text-align:center;
+
 }
 .gr{
 color:green;
@@ -7,4 +7,20 @@ margin-bottom: 20px;
 }
 .font-strong{
 font-weight: bold;
+}
+.mar{
+margin:50px
+}
+.mar-t{
+mar-top:50px;
+}
+.mar-b{
+margin-bottom: -20px;
+}
+
+.mar-l{
+margin-left:50px
+}
+.mar-r{
+margin-right:20px;
 }
