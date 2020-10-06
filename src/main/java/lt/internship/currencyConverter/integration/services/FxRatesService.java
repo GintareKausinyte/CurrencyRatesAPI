@@ -4,6 +4,7 @@ import lt.internship.currencyConverter.entities.CcyAmtDto;
 import lt.internship.currencyConverter.entities.FxRateDto;
 import lt.internship.currencyConverter.entities.FxRatesDto;
 import lt.internship.currencyConverter.integration.xmlEntities.FxRates;
+import lt.internship.currencyConverter.repositories.CcyAmtRepository;
 import lt.internship.currencyConverter.repositories.FxRateRepository;
 import lt.internship.currencyConverter.repositories.FxRatesRepsository;
 import org.springframework.stereotype.Service;
@@ -20,17 +21,33 @@ import java.util.stream.Collectors;
 public class FxRatesService {
     FxRatesRepsository ratesRepsository;
     FxRateRepository rateRepository;
+    CcyAmtRepository ccyAmtRepository;
 
-    public FxRatesService(FxRatesRepsository ratesRepsository, FxRateRepository rateRepository) {
+    public FxRatesService(FxRatesRepsository ratesRepsository, FxRateRepository rateRepository, CcyAmtRepository ccyAmtRepository) {
         this.ratesRepsository = ratesRepsository;
         this.rateRepository = rateRepository;
+        this.ccyAmtRepository = ccyAmtRepository;
+    }
+
+    public List<CcyAmtDto> getCcyAmtList() {
+        return ccyAmtRepository.findAll();
+    }
+
+    public List<FxRateDto> getFxRateList() {
+        if (rateRepository.findAll().isEmpty()) {
+            saveToDb(fetchRatesFromApi());
+        }
+        return rateRepository.findAll();
     }
 
     public List<FxRatesDto> getRates() {
-        FxRates fxRatesFromApi = fetchRatesFromApi();
-        FxRatesDto dto = saveToDb(fxRatesFromApi);
+        if (ratesRepsository.findAll().isEmpty()) {
+            FxRates fxRatesFromApi = fetchRatesFromApi();
+            FxRatesDto dto = saveToDb(fxRatesFromApi);
+        }
         return ratesRepsository.findAll();
     }
+
     private FxRates fetchRatesFromApi() {
         try {
             RestTemplate restTemplate = new RestTemplate();
@@ -44,6 +61,7 @@ public class FxRatesService {
             throw new RuntimeException(e);
         }
     }
+
     private FxRatesDto saveToDb(FxRates fxRates) {
         List<FxRateDto> dtos = fxRates.getFxRate().stream()
                 .map(fxRate -> {
@@ -64,7 +82,5 @@ public class FxRatesService {
         fxRatesDto.setFxRateDtoList(dtos);
         return ratesRepsository.save(fxRatesDto);
     }
-    public List<FxRateDto> getFxRateList(){
-        return rateRepository.findAll();
-    }
+
 }
